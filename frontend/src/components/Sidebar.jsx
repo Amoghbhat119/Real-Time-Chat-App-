@@ -71,8 +71,13 @@ const Sidebar = () => {
             <div className="hidden lg:block text-left min-w-0">
               <div className="font-medium truncate">{user.fullName}</div>
               <div className="text-sm text-zinc-400">
-                {onlineUsers.includes(user._id) ? "Online" : "Offline"}
-              </div>
+  {onlineUsers.includes(user._id)
+    ? "Online"
+    : user?.lastSeen
+      ? `Last seen: ${new Date(user.lastSeen).toLocaleString()}`
+      : "Offline"}
+</div>
+
             </div>
           </button>
         ))}
