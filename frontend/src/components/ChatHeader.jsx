@@ -21,8 +21,13 @@ const ChatHeader = () => {
           <div>
             <h3 className="font-medium">{selectedUser.fullName}</h3>
             <p className="text-sm text-base-content/70">
-              {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"}
-            </p>
+            {onlineUsers.includes(selectedUser._id)
+            ? "Online"
+            : selectedUser.lastSeen
+            ? `Last seen: ${new Date(selectedUser.lastSeen).toLocaleString()}`
+            : "Offline"}
+</p>
+
           </div>
         </div>
 
